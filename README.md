@@ -32,7 +32,6 @@ about how to prepare for the VOC2007 dataset.
 ## How To Use
 
 * compile.m - For re-compile the files.
-
 * trainBING.cpp - For training BING Objectness.
 * BINGMultiple.cpp - For reproducing the results of the original paper.
 * BINGSingle.cpp - For users to use BING on a single image.
@@ -48,7 +47,7 @@ Please contact me (removethisifyouarehuman-nhlijiaming@gmail.com) or create an i
 
 ## Known Problem
 
-If you want to re-compile it yourself, you would need to replace "ACCESS_MASK" in line 63 of mat.hpp in OpenCV to another name, such as "_ACCESS_MASK". Otherwise, "ACCESS_MASK" could lead to redefinition because it has been defined in windows.h. In Linux/mac, there is no such problem.
+If you want to re-compile it yourself, you would need to replace "__ACCESS_MASK__" in line 63 of mat.hpp in OpenCV to another name, such as "___ACCESS_MASK__". Otherwise, "ACCESS_MASK" could lead to redefinition because it has been defined in windows.h. In Linux/mac, there is no such problem.
 
 ## Other Source Code Repos
 

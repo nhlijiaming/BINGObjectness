@@ -1,6 +1,6 @@
 # BING Objectness
 
-BING Objectness proposal estimator Matlab (mex-c) wrapper, runs at 80 FPS at an i5-3210M CPU (2.5GHz) with Windows 64-bit and Matlab R2014b. Compared with the original version written in C++ provided by Mingming Cheng, runs at 150FPS, it might needs to be optimized.
+BING Objectness proposal estimator Matlab (mex-c) wrapper, runs at 80 FPS at an i5-3210M CPU (2.5GHz) with Windows 64-bit and Matlab R2014b. Compared with the original version written in C++ provided by Ming-Ming Cheng, which runs at 150FPS, it still needs to be further optimized.
 
 ## Introduction
 

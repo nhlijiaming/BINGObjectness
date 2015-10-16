@@ -16,6 +16,9 @@ DataSetVOC::DataSetVOC(CStr &_wkDir)
   testSet = CmFile::loadStrList(wkDir + "ImageSets/Main/test.txt");
   classNames = CmFile::loadStrList(wkDir + "ImageSets/Main/class.txt");
 
+  trainSet.resize(min(2000, (int)trainSet.size()));
+  testSet.resize(min(1000, (int)testSet.size()));
+  
   trainNum = trainSet.size();
   testNum = testSet.size();
 }
@@ -108,7 +111,7 @@ void DataSetVOC::loadBox(const FileNode &fn, vector<Vec4i> &boxes, vecI &clsIdx)
   string isDifficult;
   fn["difficult"]>>isDifficult;
   if (isDifficult == "1")
-    return;
+    return; 
 
   string strXmin, strYmin, strXmax, strYmax;
   fn["bndbox"]["xmin"] >> strXmin;
@@ -119,7 +122,7 @@ void DataSetVOC::loadBox(const FileNode &fn, vector<Vec4i> &boxes, vecI &clsIdx)
 
   string clsName;
   fn["name"]>>clsName;
-  clsIdx.push_back(findFromList(clsName, classNames));
+  clsIdx.push_back(findFromList(clsName, classNames));	
   CV_Assert_(clsIdx[clsIdx.size() - 1] >= 0, ("Invalidate class name\n"));
 }
 
@@ -128,7 +131,7 @@ bool DataSetVOC::loadBBoxes(CStr &nameNE, vector<Vec4i> &boxes, vecI &clsIdx)
   string fName = format(_S(annoPathW), _S(nameNE));
   FileStorage fs(fName, FileStorage::READ);
   FileNode fn = fs["annotation"]["object"];
-
+    
   boxes.clear();
   clsIdx.clear();
   if (fn.isSeq()){
@@ -148,7 +151,7 @@ bool DataSetVOC::cvt2OpenCVYml(CStr &annoDir)
   int imgNum = CmFile::GetNamesNE(annoDir + "*.yaml", namesNE);
   printf("Converting annotations to OpenCV yml format:\n");
   for (int i = 0; i < imgNum; i++){
-    printf("%d/%d %s.yaml\r", i, imgNum, _S(namesNE[i]));
+    printf("%d/%d %s.yaml\r", i, imgNum, _S(namesNE[i]));	
     string fPath = annoDir + namesNE[i];
     cvt2OpenCVYml(fPath + ".yaml", fPath + ".yml");
   }
@@ -157,8 +160,8 @@ bool DataSetVOC::cvt2OpenCVYml(CStr &annoDir)
 
 // Needs to call yml.m in this solution before running this function.
 bool DataSetVOC::cvt2OpenCVYml(CStr &yamlName, CStr &ymlName)
-{
-  ifstream f(yamlName);
+{	
+  ifstream f(yamlName);	
   FILE *fO = fopen(_S(ymlName), "w");
   if (!f.is_open() && fO == NULL)
     return false;
@@ -168,7 +171,7 @@ bool DataSetVOC::cvt2OpenCVYml(CStr &yamlName, CStr &ymlName)
   int addIdent = 0;
   while(getline(f, line)){
     if (line.substr(0, 12) == "  filename: ")
-      line = "  filename: \"" + line.substr(12) + "\"";
+      line = "  filename: \"" + line.substr(12) + "\"";			
     int tmp = line.find_first_of('-');
     if (tmp != string::npos){
       bool allSpace = true;

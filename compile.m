@@ -5,7 +5,7 @@ x64 = 1;  % 0 - 32bit mode ; 1 - 64bit mode
 
 %----------  Path Setting ----------%
 
-include = '-IE:\OpenCV3.0\build\include\ ';
+include = ['-I' cd '\ ' '-IE:\OpenCV3.0\build\include\ '];
 libpath = '-LE:\OpenCV3.0\build\x64\vc11\staticlib ';
 dependencypath = 'E:\OpenCV3.0\build\x64\vc11\lib\';
 
@@ -14,13 +14,13 @@ dependencypath = 'E:\OpenCV3.0\build\x64\vc11\lib\';
 if (debug==1)
     debug_flag = '-g ';
 else
-    debug_flag = ' ';
+    debug_flag = '';
 end
 
 if (x64==1)
     x64_flag = '-largeArrayDims ';
 else
-    x64_flag = ' ';
+    x64_flag = '';
 end
 
 compileflags = 'COMPFLAGS="$COMPFLAGS /MT" ';

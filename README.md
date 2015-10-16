@@ -1,10 +1,13 @@
 # BING Objectness
 
-BING Objectness proposal estimator Matlab (mex-c) wrapper, runs at 80 FPS at an i5-3210M CPU (2.5GHz) with Windows 64-bit and Matlab R2014b and VS2012 as the compiler. Compared with the original version written in C++ provided by Ming-Ming Cheng, which runs at 150FPS, it still needs to be further optimized.
+BING Objectness proposal estimator Matlab (mex-c) wrapper, runs at 250
+FPS at a i7 CPU (2.93Hz) with Ubuntu 12.04 64-bit and Matlab R2013a.
 
 ## Introduction
 
-This is the matlab wrapper of BING Objectness for efficient objectness proposal estimator following the CVPR 2014 paper BING, please consider to cite and refer to this paper.
+This is the matlab wrapper of BING Objectness for efficient
+objectness proposal estimator following the CVPR 2014 paper BING, please
+consider to cite and refer to this paper.
 
 @inproceedings{BingObj2014,
   title={{BING}: Binarized Normed Gradients for Objectness Estimation at
@@ -15,9 +18,12 @@ S. Torr},
   year={2014},
 }
 
-The original author Ming-Ming Cheng has already released the source code for windows 64-bit platform, and Tianfei Zhou has provided the MATLAB code for the linux/mac users.
-
-I modified the compile.m in order to fit the VS2012 compiler so that windows users in MATLAB can easily reproduce the results in the paper or use BING for some other applications.
+The original author Ming-Ming Cheng has already released the source code
+for windows 64-bit platform, and Shuai Zheng has provided the code for
+the linux/mac/windows users.
+In this library, I intend to provide some simple functions so that
+users in Matlab can easily reproduce the results in the paper or use BING for some
+other applications.
 
 ## Requirements
 
@@ -29,29 +35,44 @@ Please refer to the FAQs #2 in
 [http://mmcheng.net/bing/](http://mmcheng.net/bing/) for more details
 about how to prepare for the VOC2007 dataset.
 
-## How To Use
+## HowTo in Matlab
 
-* compile.m - For re-compile the files.
-* trainBING.cpp - For training BING Objectness.
-* BINGMultiple.cpp - For reproducing the results of the original paper.
-* BINGSingle.cpp - For users to use BING on a single image.
+I have written three mex-c fuctions:
 
-Note that the function __trainBING__ is a bit needless because __BINGMultiple__ and __BINGSingle__ themselves will learn the models if they do not exists. 
+* trainBING.cpp - For training BING Objectness
+* BINGMultiple.cpp - For reproducing the results of the original paper
+* BINGSingle.cpp - For users to use BING on a single image
 
-You can run Example\_BINGMultiple.m to reproduce the results in the origin paper, and a script called __PerImgAll.m__ will be generated in your VOC2007 folder. 
-You can use the script as well as __PlotsCVPR14.m__ to plot the Figure 3 in the paper.
+Also, I have written three matlab scripts to show how to use them in
+Matlab (Name Convention: Example\_ + function name ).
 
-I have tested the code in Windows 7 64-bit (8G Memory) and Matlab R2014b and OpenCV3.0, and it produces the same accuracy results as the original windows version, except that it runs at 80 FPS compared to 300 FPS reported in the paper, due to lower efficiency of the CPU in my laptop. 
+Note that the function __trainBING__ is a bit needless because 
+__BINGMultiple__ and __BINGSingle__ themselves will learn the models if they do not
+exists. 
 
-Please contact me (removethisifyouarehuman-nhlijiaming@gmail.com) or create an issue if you have problems to run the codes. 
+You can run Example\_BINGMultiple.m to reproduce the results in the
+origin paper, and a script called __PerImgAll.m__ will be generated in
+your VOC2007 folder. 
+You can use the script as well as __PlotsCVPR14.m__ to plot the Figure 3 in the
+paper.
 
-## Known Problem
+I have tested the code in Ubuntu 12.04 64-bit (8G Memory) and Matlab R2013a,
+ and it produces the same accuarcy results as the
+original windows version, except that in my PC, it runs at 250 FPS
+compared to 300 FPS reported in the paper. 
 
-If you want to re-compile it yourself, "__ACCESS_MASK__" in line 63 of mat.hpp in OpenCV needs to be replaced by another name, such as "___ACCESS_MASK__". Otherwise, "ACCESS_MASK" could lead to redefinition because it has been defined in windows.h. In Linux/mac, there is no such problem.
+If you intend to use the codes in other system version, please run
+_compile.m_ to re-compile the files.
+
+Please contact me (removethisifyouarehuman-tfzhou@bit.edu.cn) or create an issue if you have problems to run the
+codes. 
 
 ## Other Source Code Repos
 
 * [http://mmcheng.net/bing/](http://mmcheng.net/bing/) -- The original
   code / FAQ / Paper by Ming-Ming Cheng.
 * [https://github.com/bittnt/Objectness](https://github.com/bittnt/Objectness) -- The Linux version library by Shuai Zheng.
-* [https://github.com/tfzhou/BINGObjectness](https://github.com/tfzhou/BINGObjectness) -- The MATLAB version, using GCC as the compiler, in Linux/mac by Tianfei Zhou.
+
+## License
+
+BSD license.

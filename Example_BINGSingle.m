@@ -2,8 +2,8 @@
 
 clc; clear;
 
-imPath = '/home/fei/Research/datasets/VOC/VOC2007/JPEGImages/000001.jpg';
-vocPath = '/home/fei/Research/datasets/VOC/VOC2007/';
+imPath = 'D:\ML\BingObjectnessCVPR14\VOC2007\JPEGImages\000001.jpg';
+vocPath = 'D:\ML\BingObjectnessCVPR14\VOC2007\';
 
 im = imread( imPath );
 

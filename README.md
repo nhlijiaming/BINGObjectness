@@ -1,6 +1,6 @@
 # BING Objectness
 
-BING Objectness proposal estimator Matlab (mex-c) wrapper, runs at 80 FPS at an i5-3210M CPU (2.5GHz) with Windows 64-bit and Matlab R2014b. Compared with the original version written in C++ provided by Mingming Cheng, runs at 150FPS, it might needs to be optimized.
+BING Objectness proposal estimator Matlab (mex-c) wrapper, runs at 80 FPS at an i5-3210M CPU (2.5GHz) with Windows 64-bit and Matlab R2014b and VS2012 as the compiler. Compared with the original version written in C++ provided by Ming-Ming Cheng, which runs at 150FPS, it still needs to be further optimized.
 
 ## Introduction
 
@@ -47,7 +47,7 @@ Please contact me (removethisifyouarehuman-nhlijiaming@gmail.com) or create an i
 
 ## Known Problem
 
-If you want to re-compile it yourself, you would need to replace "__ACCESS_MASK__" in line 63 of mat.hpp in OpenCV to another name, such as "___ACCESS_MASK__". Otherwise, "ACCESS_MASK" could lead to redefinition because it has been defined in windows.h. In Linux/mac, there is no such problem.
+If you want to re-compile it yourself, "__ACCESS_MASK__" in line 63 of mat.hpp in OpenCV needs to be replaced by another name, such as "___ACCESS_MASK__". Otherwise, "ACCESS_MASK" could lead to redefinition because it has been defined in windows.h. In Linux/mac, there is no such problem.
 
 ## Other Source Code Repos
 

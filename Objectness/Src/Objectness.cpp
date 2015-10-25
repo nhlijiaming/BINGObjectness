@@ -763,8 +763,6 @@ void Objectness::getObjBndBoxesForTestsFast(vector<vector<Vec4i> > &_boxesTests,
 	tm.Stop();
 	printf("All images are predicted in %gs.\n", tm.TimeInSeconds());
 	printf("Average time for predicting an image (%s) is %gs.\n", _clrName[_Clr], tm.TimeInSeconds() / TestNum);
-  //mycout << "--- [ All images are Predicted" << endl;
-  //mycout << "--- [ Average time for predicting an image (" << _clrName[_Clr] << ") is " << tm.TimeInSeconds()/TestNum << "s" << endl;
 
 	_boxesTests.resize(TestNum);
 	CmFile::MkDir(_bbResDir);
@@ -800,7 +798,7 @@ void Objectness::getObjBndBoxesForTest( cv::Mat im, vector<Vec4i> &_boxes, int n
 
   _boxes.resize(boxesTests.size());
   for (int j = 0; j < boxesTests.size(); j++)
-    _boxes[0][j] = boxesTests[0][j];
+    _boxes[j] = boxesTests[j];
 }
 
 

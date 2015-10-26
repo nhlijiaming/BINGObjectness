@@ -5,9 +5,9 @@ x64 = 1;  % 0 - 32bit mode ; 1 - 64bit mode
 
 %----------  Path Setting ----------%
 
-include = ['-I' cd '\ ' '-IE:\OpenCV3.0\build\include\ '];
-libpath = '-LE:\OpenCV3.0\build\x64\vc11\staticlib ';
-dependencypath = 'E:\OpenCV3.0\build\x64\vc11\lib\';
+include = ['-I"' cd '" ' '-I"E:\OpenCV3.0\build\include" '];
+libpath = '-L"E:\OpenCV3.0\build\x64\vc11\staticlib" ';
+dependencypath = 'E:\OpenCV3.0\build\x64\vc11\lib';
 
 %-----------------------------------%
 
@@ -27,8 +27,8 @@ compileflags = 'COMPFLAGS="$COMPFLAGS /MT" ';
 
 mexcommand = [debug_flag x64_flag compileflags '-O ']
 
-files = dir([dependencypath '*.lib']);
-dependencies = ['-L' dependencypath ' '];
+files = dir([dependencypath '\*.lib']);
+dependencies = ['-L"' dependencypath '" '];
 for( i = 1 : length(files) )
     dependencies = [dependencies '-l' files(i).name ' '];
 end
